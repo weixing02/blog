@@ -45,7 +45,7 @@ $$\prod_{i=1}^{2}P(i)=(1-\sigma(x_w^T \theta_{1}))(\sigma(x_w^T \theta_{2}))$$
 
 有了上述定义，根据词汇$\omega$在二叉树中的对应路径，可以得到极大似然函数：
 
-$$P(\omega|x_{\omega})=\prod_2^{l_{\omega}}p(d_j^{\omega}|x_{\omega}, \theta{_{j-1}^{\omega}})$$
+$$P(\omega|x_{\omega})=\prod_{j=2}^{l_{\omega}}p(d_j^{\omega}|x_{\omega}, \theta{_{j-1}^{\omega}})$$
 
 其中
 
