@@ -63,9 +63,15 @@ $$P(\omega|x_{\omega})=\prod_2^{l_{\omega}}p(d_j^{\omega}|x_{\omega}, \theta{_{j
 其中
 
 $$p(d_j^{\omega}|x_{\omega}, \theta{_{j-1}^{\omega}})= \begin{cases}
-\sigma(x_w^T \theta_{j-1}^{\omega}),\quad d_j^{\omega}=0 \\
-1-\sigma(x_w^T \theta_{j-1}^{\omega}),\quad d_j^{\omega}=1
+\sigma(x_w^T \theta_{j-1}^{\omega}),\quad d_j^{\omega}=0 \\ 1-\sigma(x_w^T \theta_{j-1}^{\omega}),\quad d_j^{\omega}=1
 \end{cases}$$
+
+$$\begin{equation}
+\begin{cases}
+eq1\\
+eq2
+\end{cases}
+\end{equation}$$
 
 
 
