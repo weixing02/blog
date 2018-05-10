@@ -64,7 +64,8 @@ $$P(\omega|x_{\omega})=\prod_2^{l_{\omega}}p(d_j^{\omega}|x_{\omega}, \theta{_{j
 
 $$p(d_j^{\omega}|x_{\omega}, \theta{_{j-1}^{\omega}})= 
 \begin{cases}
-eqa
+&eq1 \\
+&eq2
 \end{cases}
 $$
 
