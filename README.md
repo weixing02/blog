@@ -62,12 +62,13 @@ $$P(\omega|x_{\omega})=\prod_2^{l_{\omega}}p(d_j^{\omega}|x_{\omega}, \theta{_{j
 
 其中
 
-$$p(d_j^{\omega}|x_{\omega}, \theta_{{j-1}^{\omega}})=\left\{
+$$p(d_j^{\omega}|x_{\omega}, \theta_{{j-1}^{\omega}})=
+\left\{
 \begin{array}{l}
 a+b=2\\
-a-b=4
+a-b=4\\
 \end{array}
-\right.
+\right.$$
 
 
 
