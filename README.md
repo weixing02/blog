@@ -71,8 +71,10 @@ $$
 
 $$\begin{equation}
 \begin{cases}
+\begin{eqarray}
 {eq1}\\
 {eq2}
+\end{eqarray}
 \end{cases}
 \end{equation}$$
 
