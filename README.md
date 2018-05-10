@@ -61,12 +61,7 @@ $$\prod_{i=1}^{2}P(i)=(1-\sigma(x_w^T \theta_{1}))(\sigma(x_w^T \theta_{2}))$$
 $$P(\omega|x_{\omega})=\prod_2^{l_{\omega}}p(d_j^{\omega}|x_{\omega}, \theta{_{j-1}^{\omega}})$$
 
 其中
-$$p(d_j^{\omega}|x_{\omega}, \theta{_{j-1}^{\omega}})=\left\{
-\begin{array}{lcl}
-             {[0, u_\sigma]} \\
-{[0, u_\sigma]} 
-             \end{array} 
-        \right.$$
+$$p(d_j^{\omega}|x_{\omega}, \theta{_{j-1}^{\omega}})=\left\{\begin{array}{lcl}\end{array}\right.$$
 
 
 
