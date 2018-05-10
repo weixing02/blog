@@ -71,10 +71,10 @@ $$
 
 $$\begin{equation}
 \begin{cases}
-\begin{eqarray}
+\begin{eqnarray}
 {eq1}\\
 {eq2}
-\end{eqarray}
+\end{eqnarray}
 \end{cases}
 \end{equation}$$
 
