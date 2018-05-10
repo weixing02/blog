@@ -1,16 +1,3 @@
-#
-### 传统词向量语言模型
-
-传统的词向量语言模型一般有三层结构，分别是输入层，隐藏层，输出层，其中输入层是输入的词向量，输出层是Softmax分类结果（分类结果数量等于词汇数量）。由于从隐藏层到输出采用Softmax的计算方式，该过程需要计算出所有词汇的Softmax概率并且在Softmax层上的归一化计算过程耗时巨大，导致效率低下。PaddlePaddle提供了Hsigmoid来加速模型的训练。Hsigmoid的实现原理来自于[Hierarchical Probabilistic Neural Network Language Model](http://www.iro.umontreal.ca/~lisa/pointeurs/hierarchical-nnlm-aistats05.pdf)。下面我们来介绍Hsigmoid的实现原理和步骤。
-
-### Hierarchical Softmax
-
-我们知道传统的次两类语言模型在隐藏层到输出层使用了Softmax计算，而Hierarchical Softmax则使用一颗庞大的二叉树来代替Softmax层，二叉树的每个叶子节点表示一个词汇，每一个中间节点表示隐藏层的神经元，
-<p align="center">
-<img src="https://github.com/PaddlePaddle/models/blob/develop/hsigmoid/images/binary_tree.png" width="220" hspace='10'/> <img src="https://github.com/PaddlePaddle/models/blob/develop/hsigmoid/images/path_to_1.png" width="220" hspace='10'/> <br/>
-图1. （a）为平衡二叉树，（b）为根节点到类别1的路径
-</p>
-
 运行本目录下的程序示例需要使用PaddlePaddle v0.10.0 版本。如果您的PaddlePaddle安装版本低于此要求，请按照[安装文档](http://www.paddlepaddle.org/docs/develop/documentation/zh/build_and_install/pip_install_cn.html)中的说明更新PaddlePaddle安装版本。
 
 ---
@@ -68,15 +55,17 @@ $$p(d_j^{\omega}|x_{\omega}, \theta_{j-1}^{\omega})=[\sigma(x_w^T \theta_{j-1}^\
 
 $$L=log \prod_{j=2}^{l_\omega}p(d_j^{\omega}|x_{\omega}, \theta_{j-1}^{\omega})=\prod_{j=2}^{l_\omega} (1-d_j^{\omega}) log [\sigma(x_w^T \theta_{j-1}^\omega)] + d_j^{\omega} log [1-\sigma(x_w^T \theta_{j-1}^\omega)]$$
 
-得到单个样本词汇$\omega$的对数似然函数$L$之后，我们希望将其最大化，所以采用梯度上升的方式来更新参数，首先来看对参数$\theta_{j-1}^\omega$的梯度求解：
-$$\$$
+得到单个样本词汇$\omega$的对数似然函数$L$之后，我们希望将其最大化，所以采用梯度上升的方式来更新参数，对参数$\theta_{j-1}^\omega$以及词向量$x_\omega$的梯度进行求解，可以分别得到：
 
+$$\frac{\partial L}{\partial \theta_{j-1}^{\omega}}
+=(1-d_j^{\omega}-\sigma(x_w^T \theta_{j-1}^\omega))x_\omega$$
 
+$$\frac{\partial L}{\partial x_\omega}
+=(1-d_j^{\omega}-\sigma(x_w^T \theta_{j-1}^\omega))\theta_{j-1}^{\omega}$$
 
+根据求解的梯度就可以对模型参数$\theta_{j-1}^\omega$以及词向量$x_\omega$进行迭代更新。
 
-
-
-二叉树中每个非叶子节点是一个二类别分类器（sigmoid），如果类别是0，则取左子节点继续分类判断，反之取右子节点，直至达到叶节点。按照这种方式，每个类别均对应一条路径，例如从root到类别1的路径编码为0、1。训练阶段我们按照真实类别对应的路径，依次计算对应分类器的损失，然后综合所有损失得到最终损失。预测阶段，模型会输出各个非叶节点分类器的概率，我们可以根据概率获取路径编码，然后遍历路径编码就可以得到最终预测类别。传统softmax的计算复杂度为N（N为词典大小），Hsigmoid可以将复杂度降至log(N)，详细理论细节可参照论文\[[1](#参考文献)\]。
+至此，Hsigmoid Layer的前向传播和反向传播梯度计算过程介绍完毕，传统softmax的计算复杂度为N（N为词典大小），而Hsigmoid可以将复杂度降至log(N)，更详细的理论细节可参照论文\[[1](#参考文献)\]。
 
 ## 数据准备
 ### PTB数据
