@@ -62,7 +62,17 @@ $$P(\omega|x_{\omega})=\prod_2^{l_{\omega}}p(d_j^{\omega}|x_{\omega}, \theta{_{j
 
 其中
 
-$$p(d_j^{\omega}|x_{\omega}, \theta_{j-1}^{\omega})=[\sigma(x_w^T \theta)]^{1-d_j^{\omega}[1-\sigma(x_w^T \theta)]^{d_j^{\omega}}$$
+$$p(d_j^{\omega}|x_{\omega}, \theta_{j-1}^{\omega})=[\sigma(x_w^T \theta_{j-1}^\omega)]^{1-d_j^{\omega}} * [1-\sigma(x_w^T \theta_{j-1}^\omega))]^{d_j^{\omega}}$$
+
+所以对于单个样本词汇$\omega$的对数似然函数$L$可以表示为：
+
+$$L=log \prod_{j=2}^{l_\omega}p(d_j^{\omega}|x_{\omega}, \theta_{j-1}^{\omega})=\prod_{j=2}^{l_\omega} (1-d_j^{\omega}) log [\sigma(x_w^T \theta_{j-1}^\omega)] + d_j^{\omega} log [1-\sigma(x_w^T \theta_{j-1}^\omega)]$$
+
+得到单个样本词汇$\omega$的对数似然函数$L$之后，我们希望将其最大化，所以采用梯度上升的方式来更新参数，首先来看对参数$\theta_{j-1}^\omega$的梯度求解：
+$$\$$
+
+
+
 
 
 
