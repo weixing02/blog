@@ -69,14 +69,14 @@ $$p(d_j^{\omega}|x_{\omega}, \theta{_{j-1}^{\omega}})=
 \end{cases}
 $$
 
-$$\begin{equation}
+$$\begin{eqnarray}
 \begin{cases}
-\begin{eqnarray}
+
 {eq1}\\
 {eq2}
-\end{eqnarray}
+
 \end{cases}
-\end{equation}$$
+\end{eqnarray}$$
 
 
 
