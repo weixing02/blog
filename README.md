@@ -53,7 +53,7 @@ $$\prod_{i=1}^{2}P(i)=(1-\sigma(x_w^T \theta_{1}))(\sigma(x_w^T \theta_{2}))$$
 - $\omega$：表示词典中的一个词汇
 - $x_{\omega}$：表示输入的词向量
 - $l_{\omega}$：表示从根节点到目标词$\omega$的路径包含的节点数，也就是编码长度
-- $\theta_i^{\omega}$：表示某个词$\omega$对应的路径上的第i个节点的参数，$i=1,2,3,...,l_{\omega}-1$
+- $\theta_i^{\omega}$：表示某个词$\omega$对应的路径上的第i个节点的参数，其中$i=1,2,3,...,l_{\omega}-1$
 - $d_j^{\omega}\in{\{0, 1\}}$：表示某个词$\omega$对应的路径上第j个结点的编码，其中$i=2,3,4,...,l_{\omega}$
 
 有了上述定义，根据词汇$\omega$在二叉树中的对应路径，可以得到极大似然函数：
@@ -61,8 +61,10 @@ $$\prod_{i=1}^{2}P(i)=(1-\sigma(x_w^T \theta_{1}))(\sigma(x_w^T \theta_{2}))$$
 $$P(\omega|x_{\omega})=\prod_2^{l_{\omega}}p(d_j^{\omega}|x_{\omega}, \theta{_{j-1}^{\omega}})$$
 
 其中
+
 $$p(d_j^{\omega}|x_{\omega}, \theta{_{j-1}^{\omega}})= \begin{cases}
-ok
+\sigma(x_w^T \theta_{j-1}^{\omega}),\quad d_j^{\omega}=0 \
+1-\sigma(x_w^T \theta_{j-1}^{\omega}),\quad d_j^{\omega}=1
 \end{cases}$$
 
 
