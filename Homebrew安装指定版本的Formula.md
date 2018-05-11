@@ -10,7 +10,10 @@
 
 Homebrew是基于git进行版本管理的，目前最新的最全的Homebrew库是```Homebrew/homebrew-core```，对于每一个Formula都维护一个```.rb```文件，例如```clang-format.rb```文件，这个文件的路径是
 
-```$(brew --prefix)/Homebrew/Library/Taps/homebrew/homebrew-core/Formula```
+```
+$(brew --prefix)/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
+
+```
 
 Formula文件夹下存放了各个Formula的```.rb```文件，那么这个文件有什么用呢？例如我们在执行```brew install clang-format```的时候会根据```clang-format.rb```的文件内容按步骤下载相应的依赖，并安装```clang-format```，也就是说```clang-format```的安装是完全依赖于```clang-format.rb```文件的。
 
