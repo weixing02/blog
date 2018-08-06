@@ -268,3 +268,17 @@ void swap(T a, T b);
 
 - dynamic_cast提供了运行时的类型检查，一般在基类与派生类之间的指针类型或者引用类型转换，在upcast时，dynamic_cast与static_cast一致，但是在downcast时相比于static_cast，dynamic_cast会检查指针是否真的指向了派生类对象，如果没有转换成功，dynamic_cast会返回NULL，否则返回正确的指针；static_cast不会报错，会导致潜在的危险，如踩内存等；
 
+- const_cast可以用于对const常量的修改，将原本设置为const的指向常量的指针转换为non-const的指针，例如：
+```
+const int a = 5;
+const int* ptr = &a;
+int *c = const_cast<int *>(ptr);
+*c = 3; // 通过c修改了a的值
+```
+
+- reinterpret_cast非常危险，只是单纯地进行底层比特位的转换，指针可以转为整数，也可以转换为数组等，十分危险，不建议使用；
+
+#### 函数调用的栈情况：
+
+ - https://blog.csdn.net/u011555996/article/details/70211315
+
