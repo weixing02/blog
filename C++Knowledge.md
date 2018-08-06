@@ -266,4 +266,4 @@ void swap(T a, T b);
   - 基类派生类之间的转换（upcast没有问题，但是downcast可能存在风险）
   - 任意类型与void的转换，或者任意类型的指针与void\*指针的转换
 
-- dynamic_cast提供了运行
+- dynamic_cast提供了运行时的类型检查
