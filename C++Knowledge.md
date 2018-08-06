@@ -266,4 +266,5 @@ void swap(T a, T b);
   - 基类派生类之间的转换（upcast没有问题，但是downcast可能存在风险）
   - 任意类型与void的转换，或者任意类型的指针与void\*指针的转换
 
-- dynamic_cast提供了运行时的类型检查
+- dynamic_cast提供了运行时的类型检查，一般在基类与派生类之间的指针类型或者引用类型转换，在upcast时，dynamic_cast与static_cast一致，但是在downcast时相比于static_cast，dynamic_cast会检查指针是否真的指向了派生类对象，如果没有转换成功，dynamic_cast会返回NULL，否则返回正确的指针；static_cast不会报错，会导致潜在的危险，如踩内存等；
+
