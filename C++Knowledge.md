@@ -319,8 +319,7 @@ annotations{
     "id" : int,
     "image_id" : int,
     "category_id" : int,
-    "segmentation" : RLE or [polygon],
-    "area" : float, 
+    "segmentation" : [polygon],
     "bbox" : [x,y,width,height],
     "iscrowd" : 0 or 1,
 }
