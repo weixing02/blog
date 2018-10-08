@@ -290,3 +290,9 @@ int *c = const_cast<int *>(ptr);
 
 
 #### 
+
+{
+    "info": info,
+    "images": [image],
+    "annotations": [annotation]
+}
