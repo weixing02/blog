@@ -295,6 +295,36 @@ int *c = const_cast<int *>(ptr);
 {
     "info": info,
     "images": [image],
-    "annotations": [annotation]
+    "annotations": [annotation],
+    "categories" : [categories]
 }
+
+info {
+    "description" : str,
+    "contributor" : str,
+    "url" : str,
+    "date_created" : datetime,
+}
+
+images{
+    "id" : int,
+    "width" : int,
+    "height" : int,
+    "file_name" : str,
+    "license" : int,
+    "date_captured" : datetime, 
+}
+
+annotations{
+    "id" : int,
+    "image_id" : int,
+    "category_id" : int,
+    "segmentation" : RLE or [polygon],
+    "area" : float, 
+    "bbox" : [x,y,width,height],
+    "iscrowd" : 0 or 1,
+}
+
+
+
 ```
